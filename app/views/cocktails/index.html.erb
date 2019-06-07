@@ -5,9 +5,15 @@
   <li><%= link_to cocktail_path(cocktail), class: "btn btn-primary" do %>
     <%= cocktail.name %>
     <span class = "label label-primary">OPEN</span>
+    <!-- <%#= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill %> -->
     <% end %>
   </li>
   <% end %>
 </ul>
 
+<%= cl_image_tag("bwxaaofovaljecfhzvep",
+      width: 400, height: 300, crop: :fill) %>
 
+<!-- for face detection -->
+<%= cl_image_tag("sxzoiiaxyhpv2pz6jfhh",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>
