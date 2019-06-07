@@ -1,0 +1,21 @@
+<h1>This is a seperate page ot creaet a new dose for a coktail</h1>
+
+<h2><%=@cocktail.name%></h2>
+<br>
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+<%= f.input :description %>
+<%= f.association :ingredient %>
+<%= f.submit "Add Ingredient", class: "btn btn-primary" %>
+<% end %>
+<br>
+<ul>
+  <% @cocktail.doses.each do |dose|%>
+  <li>
+    <span><%= dose.description%></span>
+    <span><%=dose.ingredient.name%></span>
+    <%= link_to "Delete", dose_path(dose), method: :delete %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Cocktail', cocktail_path(@cocktail) %>

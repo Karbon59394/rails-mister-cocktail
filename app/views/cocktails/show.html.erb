@@ -1,0 +1,23 @@
+<h1>Cocktails#show</h1>
+<p>Find me in app/views/cocktails/show.html.erb</p>
+<div class="ulist_with_header">
+  <h2><%=@cocktail.name%></h2>
+  <%= link_to "Add Ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-warning" %>
+  <ul>
+    <% @cocktail.doses.each do |dose|%>
+    <li>
+      <span><%= dose.description%></span>
+      <span><%=dose.ingredient.name%></span>
+      <%= link_to "Delete", dose_path(dose), method: :delete %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<br>
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+<%= f.input :description, collection: 1..10 %>
+<%= f.association :ingredient %>
+<%= f.submit "Add Ingredient", class: "btn btn-primary" %>
+<% end %>
+<br>
+
